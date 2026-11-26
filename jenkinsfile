@@ -2,9 +2,9 @@ pipeline {
     agent { 
         label 'master' 
     }
-    //parameters {
-    //    string defaultValue: 'Szczecin', description: '<b>Podaj swoje miasto by strawdzi pogodę</b>', name: 'MIASTO', trim: true
-    //}
+    parameters {
+        string defaultValue: 'Szczecin', description: '<b>Podaj swoje miasto by strawdzi pogodę</b>', name: 'MIASTO', trim: true
+    }
     options {
         ansiColor('xterm')
         timestamps()
