@@ -10,7 +10,11 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://accountszkoleniacloud@bitbucket.org/szkoleniacloud/cw-pogoda.git']])
+                // checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://accountszkoleniacloud@bitbucket.org/szkoleniacloud/cw-pogoda.git']])
+                sh'''
+                    echo "test"
+                    ls -la
+                    '''
             }
         }
         stage('Display Env') {
@@ -25,7 +29,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'API_KEY', variable: 'API_KEY')]) {
                     sh '''
                       bash start.sh "Szczecin" ${API_KEY}
-                      bash start.sh "Kraków" ${API_KEY}
+                      bash start.sh "${MIASTO}" ${API_KEY}
                     '''
                 }
             }
