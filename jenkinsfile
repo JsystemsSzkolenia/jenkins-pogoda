@@ -11,7 +11,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 // checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://accountszkoleniacloud@bitbucket.org/szkoleniacloud/cw-pogoda.git']])
-                checkout scmGit(branches: [[name: '*/main']], extensions: [sparseCheckout([[path: 'start.sh']])], userRemoteConfigs: [[url: 'https://accountszkoleniacloud@bitbucket.org/szkoleniacloud/cw-pogoda.git']])
+                // checkout scmGit(branches: [[name: '*/main']], extensions: [sparseCheckout([[path: 'start.sh']])], userRemoteConfigs: [[url: 'https://accountszkoleniacloud@bitbucket.org/szkoleniacloud/cw-pogoda.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'KYE_GIT', url: 'git@github.com:JsystemsSzkolenia/jenkins-pogoda.git']])
                 sh'''
                     echo "test"
                     ls -la
